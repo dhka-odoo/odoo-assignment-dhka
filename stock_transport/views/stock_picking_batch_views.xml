@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <!-- <record id="stock_picking_batch_action" model="ir.actions.act_window">
+        <field name="name">Batch Transfers</field>
+        <field name="res_model">stock.picking.batch</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('is_wave', '=', False)]</field>
+        <field name="context">{'search_default_draft': True, 'search_default_in_progress': True}</field>
+        <field name="search_view_id" ref="stock_picking_batch_filter"/>
+    </record> -->
+
+    <record id="stock_picking_batch_action_inherit" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="stock_picking_batch.stock_picking_batch_action" />
+        <field name="view_mode">graph</field>
+    </record>
+    
+    <record id="stock_picking_batch_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.batch.form.inherit</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='scheduled_date']" position="after">
+                <field name="dock" />
+                <field name="vehicle" placeholder="Third Party Provider" />
+                <field name="vehicle_category" placeholder="e.g. Semi-Truck"  />
+                <field name="weight_bar" widget="progressbar" invisible="not vehicle_category"/>
+                <field name="volume_bar" widget="progressbar" invisible="not vehicle_category"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_picking_batch_graph" model="ir.ui.view">
+        <field name="name">stock.picking.batch.graph</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="arch" type="xml">
+            <graph string="Batch">
+                <field name="scheduled_date" interval="day" />
+                <field name="vehicle_category"/>
+            </graph>
+        </field>
+    </record>
+</odoo>
