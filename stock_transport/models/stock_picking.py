@@ -5,7 +5,7 @@ class stockPickingBatch(models.Model):
 
     volume = fields.Float(compute="_compute_volume")
 
-
+    # compute methods
     @api.depends("move_line_ids")
     def _compute_volume(self):
         for record in self:

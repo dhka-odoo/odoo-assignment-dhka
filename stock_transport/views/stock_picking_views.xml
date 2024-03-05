@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
+    <!-- stock pickiing tree inherit -->
     <record id="stock_picking_tree_inherit" model="ir.ui.view">
         <field name="name">stock.picking.tree.inherit</field>
         <field name="model">stock.picking</field>

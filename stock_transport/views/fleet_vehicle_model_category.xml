@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
+    <!-- vehicle category tree inherit -->
     <record id="fleet_vehicle_model_category_view_tree_inherit" model="ir.ui.view">
         <field name="name">fleet.vehicle.model.category.view.tree.inherit</field>
         <field name="model">fleet.vehicle.model.category</field>
